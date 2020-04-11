@@ -60,7 +60,7 @@ var renderActiveNote = function() {
 
 // Get the note data from the inputs, save it to the db and update the view
 var handleNoteSave = function() {
-  console.log("Now in hamdleNoteSave");
+  console.log("Now in handleNoteSave");
   var newNote = {
     title: $noteTitle.val(),
     text: $noteText.val()
@@ -88,8 +88,9 @@ var handleNoteDelete = function(event) {
   if (activeNote.id === note.id) {
     activeNote = {};
   }
-
+  console.log("Now right before deleteNote");
   deleteNote(note.id).then(function() {
+    console.log("Now in note deletion promise");
     getAndRenderNotes();
     renderActiveNote();
   });
@@ -97,12 +98,14 @@ var handleNoteDelete = function(event) {
 
 // Sets the activeNote and displays it
 var handleNoteView = function() {
+  console.log("Now in handleNoteView");
   activeNote = $(this).data();
   renderActiveNote();
 };
 
 // Sets the activeNote to and empty object and allows the user to enter a new note
 var handleNewNoteView = function() {
+  console.log("Now in handleNewNoteSave");
   activeNote = {};
   renderActiveNote();
 };
@@ -110,6 +113,7 @@ var handleNewNoteView = function() {
 // If a note's title or text are empty, hide the save button
 // Or else show it
 var handleRenderSaveBtn = function() {
+  console.log("Now in handleRenderSaveBtn");
   if (!$noteTitle.val().trim() || !$noteText.val().trim()) {
     $saveNoteBtn.hide();
   } else {
@@ -119,6 +123,7 @@ var handleRenderSaveBtn = function() {
 
 // Render's the list of note titles
 var renderNoteList = function(notes) {
+  console.log("Now in renderNoteList");
   $noteList.empty();
 
   var noteListItems = [];
@@ -140,6 +145,7 @@ var renderNoteList = function(notes) {
 
 // Gets notes from the db and renders them to the sidebar
 var getAndRenderNotes = function() {
+  console.log("Now in getAndRenderNotes");
   return getNotes().then(function(data) {
     renderNoteList(data);
   });

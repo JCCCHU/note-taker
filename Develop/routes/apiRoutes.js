@@ -32,6 +32,7 @@ module.exports = function(app) {
       noteData[i].id = i.toString();
     }
     console.log(noteData);
+    return res.json(true);
   })
 
 };
