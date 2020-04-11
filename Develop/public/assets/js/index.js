@@ -9,6 +9,7 @@ var activeNote = {};
 
 // A function for getting all notes from the db
 var getNotes = function() {
+  console.log("Now in getNotes");
   return $.ajax({
     url: "/api/notes",
     method: "GET"
@@ -17,6 +18,7 @@ var getNotes = function() {
 
 // A function for saving a note to the db
 var saveNote = function(note) {
+  console.log("Now in saveNote");
   return $.ajax({
     url: "/api/notes",
     data: note,
@@ -26,6 +28,7 @@ var saveNote = function(note) {
 
 // A function for deleting a note from the db
 var deleteNote = function(id) {
+  console.log("Now in deleteNote");
   return $.ajax({
     url: "api/notes/" + id,
     method: "DELETE"
@@ -34,6 +37,7 @@ var deleteNote = function(id) {
 
 // If there is an activeNote, display it, otherwise render empty inputs
 var renderActiveNote = function() {
+  console.log("Now in renderActiveNote");
   $saveNoteBtn.hide();
 
   if (activeNote.id) {
@@ -51,12 +55,14 @@ var renderActiveNote = function() {
 
 // Get the note data from the inputs, save it to the db and update the view
 var handleNoteSave = function() {
+  console.log("Now in hamdleNoteSave");
   var newNote = {
     title: $noteTitle.val(),
     text: $noteText.val()
   };
 
   saveNote(newNote).then(function(data) {
+    console.log("Saved note, now handling");
     getAndRenderNotes();
     renderActiveNote();
   });
