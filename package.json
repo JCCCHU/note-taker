@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/JCCCHU/note-taker/issues"
   },
-  "homepage": "https://github.com/JCCCHU/note-taker#readme"
+  "homepage": "https://github.com/JCCCHU/note-taker#readme",
+  "dependencies": {
+    "moment": "^2.27.0"
+  }
 }
